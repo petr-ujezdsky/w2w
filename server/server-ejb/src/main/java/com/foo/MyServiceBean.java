@@ -10,7 +10,10 @@ import javax.interceptor.Interceptors;
  * MyService implementation
  */
 @Stateless
-@Interceptors(MyServerInterceptor.class)
+@Interceptors({
+        MyContextDataRetrievingInterceptor.class,
+        MyServerInterceptor.class
+})
 public class MyServiceBean implements MyService {
 
     private static final Logger logger = LoggerFactory.getLogger(MyServiceBean.class);
