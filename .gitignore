@@ -1,0 +1,9 @@
+# IntelliJ IDEA personal files
+*/*.eml
+*.iml
+.idea/*
+
+# project specific
+**/target
+deployments-client
+deployments-server

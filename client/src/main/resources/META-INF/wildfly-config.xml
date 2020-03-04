@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <authentication-client xmlns="urn:elytron:1.0">
+        <authentication-rules>
+            <rule use-configuration="ejbConfig">
+                <match-host name="w2w-server"/>
+            </rule>
+        </authentication-rules>
+        <authentication-configurations>
+            <configuration name="ejbConfig">
+                <set-user-name name="ejbUser"/>
+                <credentials>
+                    <clear-password password="ejbPassword"/>
+                </credentials>
+            </configuration>
+        </authentication-configurations>
+    </authentication-client>
+
+<!--    <jboss-ejb-client xmlns="urn:jboss:wildfly-client-ejb:3.0">-->
+<!--        <connections>-->
+<!--            <connection uri="remote+http://w2w-server:8080"/>-->
+<!--            &lt;!&ndash;            <connection uri="http-remoting://w2w-server:8080" />&ndash;&gt;-->
+<!--        </connections>-->
+<!--        <global-interceptors>-->
+<!--            <interceptor class="com.foo.MyClientInterceptor"/>-->
+<!--        </global-interceptors>-->
+<!--    </jboss-ejb-client>-->
+
+<!--    <endpoint xmlns="urn:jboss-remoting:5.0">-->
+<!--        <connections>-->
+<!--            <connection destination="remote+http://w2w-server:8080"/>-->
+<!--            &lt;!&ndash;            <connection destination="http-remoting://w2w-server:8080"/>&ndash;&gt;-->
+<!--        </connections>-->
+<!--    </endpoint>-->
+
+</configuration>
