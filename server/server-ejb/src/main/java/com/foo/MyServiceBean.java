@@ -4,11 +4,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.ejb.Stateless;
+import javax.interceptor.Interceptors;
 
 /**
  * MyService implementation
  */
 @Stateless
+@Interceptors(MyServerInterceptor.class)
 public class MyServiceBean implements MyService {
 
     private static final Logger logger = LoggerFactory.getLogger(MyServiceBean.class);
