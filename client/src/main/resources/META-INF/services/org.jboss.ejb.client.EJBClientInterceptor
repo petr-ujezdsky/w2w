@@ -3,4 +3,4 @@
 # programmatic API in the application to register it explicitly to the EJBClientContext
 
 com.foo.interceptor.MyContextDataInjectingInterceptor
-com.foo.interceptor.MyClientInterceptor
+com.foo.interceptor.AroundLoggingClientInterceptor

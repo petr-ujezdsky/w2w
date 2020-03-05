@@ -24,16 +24,17 @@ It will start the `docker-compose` and show their console outputs.
 To perform example EJB call navigate to http://localhost:8080/test.
 The console output is then following:
 ```
-client_1   | 16:20:52,580 INFO  [com.foo.interceptor.MyContextDataInjectingInterceptor] (default task-1) RequestId 43106e41-16a6-469a-a4f2-7e4a53df2f84
-client_1   | 16:20:52,580 INFO  [com.foo.interceptor.MyClientInterceptor] (default task-1) handleInvocation - before sendRequest, 2
-client_1   | 16:20:52,581 INFO  [com.foo.interceptor.MyClientInterceptor] (default task-1) handleInvocation - after sendRequest
-server_1   | 16:20:52,590 INFO  [com.foo.interceptor.MyContextDataRetrievingInterceptor] (default task-1) RequestId 43106e41-16a6-469a-a4f2-7e4a53df2f84
-server_1   | 16:20:52,591 INFO  [com.foo.interceptor.MyServerInterceptor] (default task-1) MyServiceBean#processText - start
-server_1   | 16:20:52,592 INFO  [com.foo.MyServiceBean] (default task-1) Doing textToUpper for text hello world
-server_1   | 16:20:52,594 INFO  [com.foo.interceptor.MyServerInterceptor] (default task-1) MyServiceBean#processText - end
-client_1   | 16:20:52,600 INFO  [com.foo.interceptor.MyClientInterceptor] (default task-1) handleInvocationResult - before getResult
-client_1   | 16:20:52,600 INFO  [com.foo.interceptor.MyClientInterceptor] (default task-1) handleInvocationResult - after getResult
-client_1   | 16:20:52,601 INFO  [com.foo.MyServlet] (default task-1) Processing request - end
+client_1   | 10:36:49,015 INFO  [com.foo.servlet.MyServlet] (default task-1) Processing request - start
+client_1   | 10:36:49,129 INFO  [com.foo.interceptor.MyContextDataInjectingInterceptor] (default task-1) RequestId a44643d9-ea3b-42af-8237-ed445f05e0d2
+client_1   | 10:36:49,130 INFO  [com.foo.interceptor.AroundLoggingClientInterceptor] (default task-1) #2 handleInvocation - before sendRequest
+client_1   | 10:36:49,295 INFO  [com.foo.interceptor.AroundLoggingClientInterceptor] (default task-1) #2 handleInvocation - after sendRequest
+server_1   | 10:36:50,329 INFO  [com.foo.interceptor.MyContextDataRetrievingInterceptor] (default task-2) RequestId a44643d9-ea3b-42af-8237-ed445f05e0d2
+server_1   | 10:36:50,330 INFO  [com.foo.interceptor.MyServerInterceptor] (default task-2) MyServiceBean#processText - start
+server_1   | 10:36:50,331 INFO  [com.foo.MyServiceBean] (default task-2) Doing textToUpper for text hello world
+server_1   | 10:36:50,331 INFO  [com.foo.interceptor.MyServerInterceptor] (default task-2) MyServiceBean#processText - end
+client_1   | 10:36:50,371 INFO  [com.foo.interceptor.AroundLoggingClientInterceptor] (default task-1) #2 handleInvocationResult - before getResult
+client_1   | 10:36:50,483 INFO  [com.foo.interceptor.AroundLoggingClientInterceptor] (default task-1) #2 handleInvocationResult - after getResult
+client_1   | 10:36:50,519 INFO  [com.foo.servlet.MyServlet] (default task-1) Processing request - end
 ```
 
 And web page shows
