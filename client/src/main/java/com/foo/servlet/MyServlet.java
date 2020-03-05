@@ -1,21 +1,17 @@
-package com.foo;
+package com.foo.servlet;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.foo.EjbLocator;
+import com.foo.MyService;
 
-import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
 @WebServlet(urlPatterns = "/test")
-public class MyServlet extends HttpServlet {
-
-    private static final Logger logger = LoggerFactory.getLogger(MyServlet.class);
+public class MyServlet extends LoggingServlet {
 
     private final MyService myServiceRemote;
 
@@ -23,8 +19,7 @@ public class MyServlet extends HttpServlet {
         myServiceRemote = EjbLocator.INSTANCE.lookupBean(MyService.class);
     }
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        logger.info("Processing request - start");
+    public void doGetImpl(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String text = "hello world";
         String processedText = myServiceRemote.processText(text);
 
@@ -33,6 +28,5 @@ public class MyServlet extends HttpServlet {
         out.println(processedText);
         out.flush();
         out.close();
-        logger.info("Processing request - end");
     }
 }
