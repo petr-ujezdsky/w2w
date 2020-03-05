@@ -13,13 +13,13 @@ import java.util.Properties;
  */
 public class EjbLocator {
 
-    private static final Logger logger = LoggerFactory.getLogger(MyServlet.class);
+    private static final Logger logger = LoggerFactory.getLogger(EjbLocator.class);
 
     public static final EjbLocator INSTANCE = new EjbLocator();
 
     private final Context ctx;
 
-    public EjbLocator() {
+    private EjbLocator() {
         try {
             ctx = createInitialContext();
         } catch (NamingException e) {
