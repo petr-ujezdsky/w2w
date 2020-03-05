@@ -22,7 +22,7 @@ public class MyContextDataInjectingInterceptor implements EJBClientInterceptor {
         UUID requestId = UUID.randomUUID();
         MyContextData contextData = new MyContextData(requestId);
         ejbClientInvocationContext.getContextData().put(CONTEXT_DATA_ATTRIBUTE_NAME, contextData);
-        logger.info("RequestId {}", requestId);
+        logger.info("Generated requestId {}", requestId);
 
         ejbClientInvocationContext.sendRequest();
     }

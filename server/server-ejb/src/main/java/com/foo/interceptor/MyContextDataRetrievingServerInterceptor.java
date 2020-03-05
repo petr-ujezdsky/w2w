@@ -20,7 +20,7 @@ public class MyContextDataRetrievingServerInterceptor {
     public Object extractContextData(InvocationContext ctx) throws Exception {
         MyContextData contextData = (MyContextData) ctx.getContextData().get(CONTEXT_DATA_ATTRIBUTE_NAME);
 
-        logger.info("RequestId {}", contextData.getRequestId());
+        logger.info("Obtained requestId {}", contextData.getRequestId());
         return ctx.proceed();
     }
 }

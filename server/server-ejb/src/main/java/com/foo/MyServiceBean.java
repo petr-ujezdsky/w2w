@@ -13,8 +13,8 @@ import javax.interceptor.Interceptors;
  */
 @Stateless
 @Interceptors({
-        MyContextDataRetrievingServerInterceptor.class,
-        AroundLoggingServerInterceptor.class
+        AroundLoggingServerInterceptor.class,
+        MyContextDataRetrievingServerInterceptor.class
 })
 public class MyServiceBean implements MyService {
 
