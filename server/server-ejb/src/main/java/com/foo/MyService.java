@@ -8,4 +8,6 @@ import javax.ejb.Remote;
 @Remote
 public interface MyService {
     String processText(String text);
+
+    String alwaysFail() throws Exception;
 }

@@ -25,4 +25,9 @@ public class MyServiceBean implements MyService {
         logger.info("Doing textToUpper for text " + text);
         return text.toUpperCase();
     }
+
+    @Override
+    public String alwaysFail() throws Exception {
+        throw new Exception("Intended exception for test");
+    }
 }
