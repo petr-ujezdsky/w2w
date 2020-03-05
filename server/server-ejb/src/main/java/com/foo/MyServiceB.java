@@ -1,11 +1,11 @@
 package com.foo;
 
-import javax.ejb.Remote;
+import javax.ejb.Local;
 
 /**
- * MyServiceB remote interface
+ * MyServiceB local interface
  */
-@Remote
+@Local
 public interface MyServiceB {
     String processText(String text);
 }

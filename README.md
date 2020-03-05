@@ -129,10 +129,25 @@ HELLO WORLD
 ### Perform EJB call whose implementation calls method from another EJB service
 Navigate to http://localhost:8080/testA2BRemoteCall
 
-Note that the server interceptors are not called again for the local method invocation.
+Note that the server interceptors are called again for the another EJB service remote method invocation. It uses new
+`InvocationContext`. The `contextData` map is not transferred from the first EJB call (`No contextData found`).
 The console output is then following:
 ```
-TODO
+client_1   | 12:04:00,623 INFO  [com.foo.servlet.TestA2BRemoteCallServlet] (default task-1) Processing request - start
+client_1   | 12:04:00,625 INFO  [com.foo.interceptor.AroundLoggingClientInterceptor] (default task-1) #2 handleInvocation - before sendRequest
+client_1   | 12:04:00,625 INFO  [com.foo.interceptor.MyContextDataInjectingInterceptor] (default task-1) Generated requestId 03b35e2c-c020-47a8-81f3-7341c2e6894b
+client_1   | 12:04:00,626 INFO  [com.foo.interceptor.AroundLoggingClientInterceptor] (default task-1) #2 handleInvocation - after sendRequest
+server_1   | 12:04:00,634 INFO  [com.foo.interceptor.AroundLoggingServerInterceptor] (default task-1) MyServiceABean#callsBRemoteProcessText - start
+server_1   | 12:04:00,635 INFO  [com.foo.interceptor.MyContextDataRetrievingServerInterceptor] (default task-1) Obtained requestId 03b35e2c-c020-47a8-81f3-7341c2e6894b
+server_1   | 12:04:00,637 INFO  [com.foo.MyServiceABean] (default task-1) Invoking remote MyServiceB$$$view1#processText
+server_1   | 12:04:00,639 INFO  [com.foo.interceptor.AroundLoggingServerInterceptor] (default task-1) MyServiceBBean#processText - start
+server_1   | 12:04:00,639 INFO  [com.foo.interceptor.MyContextDataRetrievingServerInterceptor] (default task-1) No contextData found
+server_1   | 12:04:00,639 INFO  [com.foo.MyServiceBBean] (default task-1) Doing "hello world".toLowerCase() inside method processText
+server_1   | 12:04:00,641 INFO  [com.foo.interceptor.AroundLoggingServerInterceptor] (default task-1) MyServiceBBean#processText - end
+server_1   | 12:04:00,642 INFO  [com.foo.interceptor.AroundLoggingServerInterceptor] (default task-1) MyServiceABean#callsBRemoteProcessText - end
+client_1   | 12:04:00,646 INFO  [com.foo.interceptor.AroundLoggingClientInterceptor] (default task-1) #2 handleInvocationResult - before getResult
+client_1   | 12:04:00,646 INFO  [com.foo.interceptor.AroundLoggingClientInterceptor] (default task-1) #2 handleInvocationResult - after getResult
+client_1   | 12:04:00,648 INFO  [com.foo.servlet.TestA2BRemoteCallServlet] (default task-1) Processing request - end
 ```
 
 And web page shows
@@ -143,4 +158,3 @@ hello world
 
 ## Stop running Wildfly instances
 To stop running Wildfly instances hit `Ctrl + C`.
-

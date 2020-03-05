@@ -23,7 +23,7 @@ public class MyServiceABean implements MyServiceA {
     private static final Logger logger = LoggerFactory.getLogger(MyServiceABean.class);
 
     @EJB
-    private MyServiceBBean myServiceB;
+    private MyServiceB myServiceB;
 
     @Override
     public String processText(String text) {
