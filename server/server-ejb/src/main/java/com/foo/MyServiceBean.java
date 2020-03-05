@@ -1,7 +1,7 @@
 package com.foo;
 
-import com.foo.interceptor.MyContextDataRetrievingInterceptor;
-import com.foo.interceptor.MyServerInterceptor;
+import com.foo.interceptor.MyContextDataRetrievingServerInterceptor;
+import com.foo.interceptor.AroundLoggingServerInterceptor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,8 +13,8 @@ import javax.interceptor.Interceptors;
  */
 @Stateless
 @Interceptors({
-        MyContextDataRetrievingInterceptor.class,
-        MyServerInterceptor.class
+        MyContextDataRetrievingServerInterceptor.class,
+        AroundLoggingServerInterceptor.class
 })
 public class MyServiceBean implements MyService {
 

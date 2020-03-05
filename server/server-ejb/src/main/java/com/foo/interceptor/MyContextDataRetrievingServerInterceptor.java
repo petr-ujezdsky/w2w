@@ -10,11 +10,11 @@ import javax.interceptor.InvocationContext;
 /**
  * Server interceptor that retrieves {@link MyContextData} from EJB metadata.
  */
-public class MyContextDataRetrievingInterceptor {
+public class MyContextDataRetrievingServerInterceptor {
 
-    private final Logger logger = LoggerFactory.getLogger(MyContextDataRetrievingInterceptor.class);
+    private final Logger logger = LoggerFactory.getLogger(MyContextDataRetrievingServerInterceptor.class);
 
-    public static final String CONTEXT_DATA_ATTRIBUTE_NAME = MyContextDataRetrievingInterceptor.class.getSimpleName() + ".CONTEXT_DATA";
+    public static final String CONTEXT_DATA_ATTRIBUTE_NAME = MyContextDataRetrievingServerInterceptor.class.getSimpleName() + ".CONTEXT_DATA";
 
     @AroundInvoke
     public Object extractContextData(InvocationContext ctx) throws Exception {

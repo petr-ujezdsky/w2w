@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.UUID;
 
-import static com.foo.interceptor.MyContextDataRetrievingInterceptor.CONTEXT_DATA_ATTRIBUTE_NAME;
+import static com.foo.interceptor.MyContextDataRetrievingServerInterceptor.CONTEXT_DATA_ATTRIBUTE_NAME;
 
 /**
  * Client interceptor that injects {@link MyContextData} into EJB metadata.

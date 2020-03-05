@@ -7,11 +7,11 @@ import javax.interceptor.AroundInvoke;
 import javax.interceptor.InvocationContext;
 
 /**
- * Server interceptor
+ * Server interceptor that logs before and after.
  */
-public class MyServerInterceptor {
+public class AroundLoggingServerInterceptor {
 
-    private final Logger logger = LoggerFactory.getLogger(MyServerInterceptor.class);
+    private final Logger logger = LoggerFactory.getLogger(AroundLoggingServerInterceptor.class);
 
     @AroundInvoke
     public Object logBeforeAndAfter(InvocationContext ctx) throws Exception {
