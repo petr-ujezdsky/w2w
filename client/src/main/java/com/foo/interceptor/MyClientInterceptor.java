@@ -1,4 +1,4 @@
-package com.foo;
+package com.foo.interceptor;
 
 import org.jboss.ejb.client.EJBClientInterceptor;
 import org.jboss.ejb.client.EJBClientInvocationContext;

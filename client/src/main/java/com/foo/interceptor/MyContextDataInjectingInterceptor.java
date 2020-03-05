@@ -1,5 +1,6 @@
-package com.foo;
+package com.foo.interceptor;
 
+import com.foo.MyContextData;
 import org.jboss.ejb.client.EJBClientInterceptor;
 import org.jboss.ejb.client.EJBClientInvocationContext;
 import org.slf4j.Logger;
@@ -7,7 +8,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.UUID;
 
-import static com.foo.MyContextDataRetrievingInterceptor.CONTEXT_DATA_ATTRIBUTE_NAME;
+import static com.foo.interceptor.MyContextDataRetrievingInterceptor.CONTEXT_DATA_ATTRIBUTE_NAME;
 
 /**
  * Client interceptor that injects {@link MyContextData} into EJB metadata.

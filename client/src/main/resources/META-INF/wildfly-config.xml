@@ -22,7 +22,7 @@
 <!--            &lt;!&ndash;            <connection uri="http-remoting://w2w-server:8080" />&ndash;&gt;-->
 <!--        </connections>-->
 <!--        <global-interceptors>-->
-<!--            <interceptor class="com.foo.MyClientInterceptor"/>-->
+<!--            <interceptor class="com.foo.interceptor.MyClientInterceptor"/>-->
 <!--        </global-interceptors>-->
 <!--    </jboss-ejb-client>-->
 

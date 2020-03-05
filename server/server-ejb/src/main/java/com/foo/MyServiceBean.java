@@ -1,5 +1,7 @@
 package com.foo;
 
+import com.foo.interceptor.MyContextDataRetrievingInterceptor;
+import com.foo.interceptor.MyServerInterceptor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
