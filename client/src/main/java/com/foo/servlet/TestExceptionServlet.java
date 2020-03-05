@@ -23,7 +23,8 @@ public class TestExceptionServlet extends LoggingServlet {
             myServiceRemote.alwaysFail();
             throw new RuntimeException("Ejb call did not fail");
         } catch (Exception e) {
-            // no-op
+            // expected exception
+            logger.info("Ejb call threw exception", e);
         }
         PrintWriter out = response.getWriter();
         out.println("EJB call performed.");

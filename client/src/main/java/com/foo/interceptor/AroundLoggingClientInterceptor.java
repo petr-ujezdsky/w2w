@@ -24,17 +24,25 @@ public class AroundLoggingClientInterceptor implements EJBClientInterceptor {
     @Override
     public void handleInvocation(EJBClientInvocationContext ejbClientInvocationContext) throws Exception {
         log("handleInvocation - before sendRequest");
-        ejbClientInvocationContext.sendRequest();
-        log("handleInvocation - after sendRequest");
+        try {
+            ejbClientInvocationContext.sendRequest();
+            log("handleInvocation - after sendRequest");
+        } catch (Exception e) {
+            log("handleInvocation - after sendRequest (exception - " + e.getMessage() + ")");
+            throw e;
+        }
     }
 
     @Override
     public Object handleInvocationResult(EJBClientInvocationContext ejbClientInvocationContext) throws Exception {
         log("handleInvocationResult - before getResult");
         try {
-            return ejbClientInvocationContext.getResult();
-        } finally {
+            Object result = ejbClientInvocationContext.getResult();
             log("handleInvocationResult - after getResult");
+            return result;
+        } catch (Exception e) {
+            log("handleInvocationResult - after getResult (exception - " + e.getMessage() + ")");
+            throw e;
         }
     }
 

@@ -52,16 +52,20 @@ Navigate to http://localhost:8080/testException
 
 The console output is then following:
 ```
-client_1   | 10:52:58,168 INFO  [com.foo.servlet.TestExceptionServlet] (default task-1) Processing request - start
-client_1   | 10:52:58,169 INFO  [com.foo.interceptor.AroundLoggingClientInterceptor] (default task-1) #2 handleInvocation - before sendRequest
-client_1   | 10:52:58,169 INFO  [com.foo.interceptor.MyContextDataInjectingInterceptor] (default task-1) Generated requestId def36838-6592-42db-a7a3-d59deed5a09f
-client_1   | 10:52:58,171 INFO  [com.foo.interceptor.AroundLoggingClientInterceptor] (default task-1) #2 handleInvocation - after sendRequest
-server_1   | 10:52:58,179 INFO  [com.foo.interceptor.AroundLoggingServerInterceptor] (default task-1) MyServiceBean#alwaysFail - start
-server_1   | 10:52:58,180 INFO  [com.foo.interceptor.MyContextDataRetrievingServerInterceptor] (default task-1) Obtained requestId def36838-6592-42db-a7a3-d59deed5a09f
-server_1   | 10:52:58,181 INFO  [com.foo.interceptor.AroundLoggingServerInterceptor] (default task-1) MyServiceBean#alwaysFail - end
-client_1   | 10:52:58,209 INFO  [com.foo.interceptor.AroundLoggingClientInterceptor] (default task-1) #2 handleInvocationResult - before getResult
-client_1   | 10:52:58,225 INFO  [com.foo.interceptor.AroundLoggingClientInterceptor] (default task-1) #2 handleInvocationResult - after getResult
-client_1   | 10:52:58,227 INFO  [com.foo.servlet.TestExceptionServlet] (default task-1) Processing request - end
+client_1   | 11:03:23,194 INFO  [com.foo.servlet.TestExceptionServlet] (default task-1) Processing request - start
+client_1   | 11:03:23,341 INFO  [com.foo.interceptor.AroundLoggingClientInterceptor] (default task-1) #2 handleInvocation - before sendRequest
+client_1   | 11:03:23,344 INFO  [com.foo.interceptor.MyContextDataInjectingInterceptor] (default task-1) Generated requestId c569db6d-69e6-4cc7-ae06-8de0e3de7606
+client_1   | 11:03:23,699 INFO  [com.foo.interceptor.AroundLoggingClientInterceptor] (default task-1) #2 handleInvocation - after sendRequest
+server_1   | 11:03:25,041 INFO  [com.foo.interceptor.AroundLoggingServerInterceptor] (default task-2) MyServiceBean#alwaysFail - start
+server_1   | 11:03:25,042 INFO  [com.foo.interceptor.MyContextDataRetrievingServerInterceptor] (default task-2) Obtained requestId c569db6d-69e6-4cc7-ae06-8de0e3de7606
+server_1   | 11:03:25,043 INFO  [com.foo.interceptor.AroundLoggingServerInterceptor] (default task-2) MyServiceBean#alwaysFail - end
+client_1   | 11:03:25,099 INFO  [com.foo.interceptor.AroundLoggingClientInterceptor] (default task-1) #2 handleInvocationResult - before getResult
+client_1   | 11:03:25,248 INFO  [com.foo.interceptor.AroundLoggingClientInterceptor] (default task-1) #2 handleInvocationResult - after getResult (exception - Intended exception for test)
+client_1   | 11:03:25,251 INFO  [com.foo.servlet.TestExceptionServlet] (default task-1) Ejb call threw exception: java.lang.Exception: Intended exception for test
+client_1   |    at com.foo.MyServiceBean.alwaysFail(MyServiceBean.java:31)
+client_1   |    at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+...
+client_1   | 11:03:25,304 INFO  [com.foo.servlet.TestExceptionServlet] (default task-1) Processing request - end
 ```
 
 And web page shows
