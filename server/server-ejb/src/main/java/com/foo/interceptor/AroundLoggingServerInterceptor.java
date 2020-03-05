@@ -20,9 +20,12 @@ public class AroundLoggingServerInterceptor {
 
         try {
             logger.info("{}#{} - start", className, methodName);
-            return ctx.proceed();
-        } finally {
+            Object result = ctx.proceed();
             logger.info("{}#{} - end", className, methodName);
+            return result;
+        } catch (Throwable e){
+            logger.info("{}#{} - end (exception - {})", className, methodName, e.getMessage());
+            throw e;
         }
     }
 }

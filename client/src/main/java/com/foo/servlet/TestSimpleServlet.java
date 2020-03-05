@@ -1,7 +1,7 @@
 package com.foo.servlet;
 
 import com.foo.EjbLocator;
-import com.foo.MyService;
+import com.foo.MyServiceA;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -12,10 +12,10 @@ import java.io.PrintWriter;
 @WebServlet(urlPatterns = "/testSimple")
 public class TestSimpleServlet extends LoggingServlet {
 
-    private final MyService myServiceRemote;
+    private final MyServiceA myServiceRemote;
 
     public TestSimpleServlet() {
-        myServiceRemote = EjbLocator.INSTANCE.lookupBean(MyService.class);
+        myServiceRemote = EjbLocator.INSTANCE.lookupBean(MyServiceA.class);
     }
 
     public void doGetImpl(HttpServletRequest request, HttpServletResponse response) throws IOException {

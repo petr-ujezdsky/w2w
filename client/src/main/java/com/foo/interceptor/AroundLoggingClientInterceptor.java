@@ -27,7 +27,7 @@ public class AroundLoggingClientInterceptor implements EJBClientInterceptor {
         try {
             ejbClientInvocationContext.sendRequest();
             log("handleInvocation - after sendRequest");
-        } catch (Exception e) {
+        } catch (Throwable e) {
             log("handleInvocation - after sendRequest (exception - " + e.getMessage() + ")");
             throw e;
         }
@@ -40,7 +40,7 @@ public class AroundLoggingClientInterceptor implements EJBClientInterceptor {
             Object result = ejbClientInvocationContext.getResult();
             log("handleInvocationResult - after getResult");
             return result;
-        } catch (Exception e) {
+        } catch (Throwable e) {
             log("handleInvocationResult - after getResult (exception - " + e.getMessage() + ")");
             throw e;
         }
